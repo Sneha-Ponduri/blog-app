@@ -49,6 +49,7 @@
 //     });
 //   }
 // }
+'use client'
 import BlogOverview from "@/components/blog-overview";
 import React, { useEffect, useState } from 'react';
 
