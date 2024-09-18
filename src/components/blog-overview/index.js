@@ -30,7 +30,7 @@ function BlogOverview({ blogList }) {
 
   useEffect(() => {
     // router.refresh();
-    window.location.reload();
+    router.refresh();
   }, []);
 
   console.log(blogFormData);
@@ -60,8 +60,8 @@ function BlogOverview({ blogList }) {
         setOpenBlogDialog(false);
         setLoading(false);
         setCurrentEditedBlogID(null);
-        // router.refresh();
-        window.location.reload();
+        router.refresh();
+        
       }
       console.log(result);
     } catch (error) {
