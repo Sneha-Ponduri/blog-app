@@ -33,7 +33,7 @@ import React, { useEffect, useState } from 'react';
 // This function fetches the blogs
 async function fetchListOfBlogs() {
   try {
-    const apiResponse = await fetch("http://localhost:3000/api/get-blogs", {
+    const apiResponse = await fetch("/api/get-blogs", {
       method: "GET",
       cache: "no-store", // Prevent caching
     });
