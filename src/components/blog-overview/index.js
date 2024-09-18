@@ -30,6 +30,7 @@ function BlogOverview({ blogList }) {
 
   useEffect(() => {
     // router.refresh();
+    window.location.reload();
   }, []);
 
   console.log(blogFormData);
@@ -48,6 +49,9 @@ function BlogOverview({ blogList }) {
             })
           : await fetch("/api/add-blog", {
               method: "POST",
+              headers: {
+                'Content-Type': 'application/json', // Add the header here
+              },
               body: JSON.stringify(blogFormData),
             });
       const result = await apiResponse.json();
@@ -56,7 +60,8 @@ function BlogOverview({ blogList }) {
         setOpenBlogDialog(false);
         setLoading(false);
         setCurrentEditedBlogID(null);
-        router.refresh();
+        // router.refresh();
+        window.location.reload();
       }
       console.log(result);
     } catch (error) {

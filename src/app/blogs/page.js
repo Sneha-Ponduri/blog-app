@@ -32,7 +32,7 @@ import React from 'react';
 // This function fetches the blogs
 async function fetchListOfBlogs() {
   try {
-    const apiResponse = await fetch("http://localhost:3000/api/get-blogs", {
+    const apiResponse = await fetch("https://blog-app-2sqs.vercel.app/blogs/api/get-blogs", {
       method: "GET",
       cache: "no-store", // To avoid caching, or you can use 'force-cache' or 'revalidate' if needed
     });
