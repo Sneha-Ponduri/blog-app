@@ -2,7 +2,7 @@ import connectToDB from "@/database";
 import Blog from "@/models/blog";
 import { NextResponse } from "next/server";
 import React, { useContext } from 'react';
-import { MyContext } from './context';
+
 export async function DELETE(req) {
   try {
     await connectToDB();
