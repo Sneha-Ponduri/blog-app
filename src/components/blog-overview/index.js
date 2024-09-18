@@ -29,7 +29,7 @@ function BlogOverview({ blogList }) {
   const router = useRouter();
 
   useEffect(() => {
-    router.refresh();
+    // router.refresh();
   }, []);
 
   console.log(blogFormData);
@@ -41,6 +41,9 @@ function BlogOverview({ blogList }) {
         currentEditedBlogID !== null
           ? await fetch(`/api/update-blog?id=${currentEditedBlogID}`, {
               method: "PUT",
+              headers: {
+                'Content-Type': 'application/json', // Add the header here
+              },
               body: JSON.stringify(blogFormData),
             })
           : await fetch("/api/add-blog", {
