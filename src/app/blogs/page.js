@@ -34,27 +34,21 @@ async function fetchListOfBlogs() {
   try {
     const apiResponse = await fetch("http://localhost:3000/api/get-blogs", {
       method: "GET",
-      cache: "no-store", // You can replace this with a cache or revalidate option as needed
+      cache: "no-store", // To avoid caching, or you can use 'force-cache' or 'revalidate' if needed
     });
 
     const result = await apiResponse.json();
 
     return result?.data;
   } catch (error) {
-    throw new Error(error);
+    console.error("Error fetching blogs:", error);
+    return []; // Return an empty array if the fetch fails to avoid breaking the app
   }
 }
 
-// Use getServerSideProps to fetch the data at request time
-export async function getServerSideProps() {
+// Server Component
+export default async function Blogs() {
   const blogList = await fetchListOfBlogs();
-  return {
-    props: { blogList }, // Pass blogList as a prop to the page
-  };
-}
 
-function Blogs({ blogList }) {
   return <BlogOverview blogList={blogList} />;
 }
-
-export default Blogs;
